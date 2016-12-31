@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myAppDep').directive('banner', function () {
+angular.module('myAppDep').directive('myBanner', function () {
   return {
     restrict: 'E',
     templateUrl: 'views/banner.html',

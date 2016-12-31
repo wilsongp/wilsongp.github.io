@@ -17,7 +17,7 @@ describe('sidebar directive', function () {
         $location = _$location_;
         $route = _$route_;
         scope = $rootScope.$new();
-        element = $compile("<sidebar></sidebar>")(scope);
+        element = $compile("<my-sidebar></my-sidebar>")(scope);
     }));
 
     describe('handles routes and', function() {

@@ -38,7 +38,7 @@ section[glam] {
     position: relative;
 }
 
-sidebar {
+my-sidebar {
     max-width: 20em;
     z-index: 1;
 }
@@ -166,7 +166,7 @@ sidebar {
         float: none !important;
     }
 
-    sidebar { /* Keeps line from appearing above collapsed sidebar */
+    my-sidebar { /* Keeps line from appearing above collapsed sidebar */
         min-height: 0 !important;
         padding-right: 0 !important;
         padding-left: 0 !important;
@@ -202,9 +202,9 @@ sidebar {
 /* small */
 @media(min-width:768px) {
     #wrapper,
-    #wrapper > sidebar,
-    #wrapper > sidebar > div,
-    #wrapper > sidebar > div > .navbar {
+    #wrapper > my-sidebar,
+    #wrapper > my-sidebar > div,
+    #wrapper > my-sidebar > div > .navbar {
         height: 100%;
     }
 }

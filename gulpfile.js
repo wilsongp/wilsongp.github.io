@@ -1,3 +1,8 @@
+/* Constants */
+var mainFile = 'app.concat.js';
+var mainPath = 'dist';
+var mainAppPath = mainPath+'/'+mainFile;
+
 // Include gulp
 var gulp = require('gulp');
 var deploy = require('gulp-gh-pages');
@@ -27,26 +32,30 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('clean:dist', function() {
-    return del.sync('dist');
+    return del.sync(['dist']); // tell
+});
+
+gulp.task('clean:angular', function() {
+    return del.sync(mainAppPath);
 });
 
 /****
  * Deployment
  **/
 // Concatenate & Minify AngularJS app
-gulp.task('concat-angular', function() {
+gulp.task('concat-angular', ['clean:angular'], function() {
     return gulp.src([
         'app/app.js',
         'app/**/*.js',
         '!app/**/*.spec.js'
     ])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('app'));
+    .pipe(concat(mainFile))
+    .pipe(gulp.dest(mainPath));
 });
 
 // Bundle dependencies
 gulp.task('useref', function(){
-    return gulp.src('./*.html')
+    return gulp.src('./**/*.html')
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         // Minifies only if it's a CSS file
@@ -61,13 +70,15 @@ gulp.task('images', function(){
         .pipe(cache(imagemin({
             interlaced: true
         })))
-        .pipe(gulp.dest('dist/images'))
+        .pipe(gulp.dest('dist/assets/images'))
 });
 
 // Build /dist
 gulp.task('build', function (callback) {
-    runSequence('clean:dist',
-        ['concat-angular', 'useref', 'images'],
+    runSequence(
+        'clean:dist',
+        'concat-angular',
+        ['useref', 'images'],
         callback
     )
 });
@@ -97,4 +108,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'concat-angular', 'watch']);
+gulp.task('default', ['concat-angular', 'watch']);

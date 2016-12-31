@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myAppDep').directive('sidebar', ['$route', function ($route) {
+angular.module('myAppDep').directive('mySidebar', ['$route', function ($route) {
   return {
     restrict: 'E',
     templateUrl: 'views/sidebar.html',

@@ -14,7 +14,7 @@ describe('banner directive', function () {
         $rootScope = _$rootScope_;
         scope = $rootScope.$new();
 
-        element = $compile("<banner></banner>")(scope);
+        element = $compile("<my-banner></my-banner>")(scope);
         $rootScope.$digest();
         linkScope = element.children().scope();
     }));
