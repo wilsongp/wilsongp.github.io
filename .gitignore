@@ -43,4 +43,5 @@ jspm_packages
 .ftpquota
 
 #Deployment
-dist
+dist/
+.publish
