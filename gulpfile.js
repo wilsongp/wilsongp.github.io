@@ -32,11 +32,14 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('clean:dist', function() {
-    return del.sync(['dist']); // tell
+    return del.sync(['dist']);
 });
 
 gulp.task('clean:angular', function() {
     return del.sync(mainAppPath);
+});
+gulp.task('clean:dist:node_modules', function() {
+    return del.sync(['dist/node_modules']);
 });
 
 /****
@@ -79,6 +82,7 @@ gulp.task('build', function (callback) {
         'clean:dist',
         'concat-angular',
         ['useref', 'images'],
+        'clean:dist:node_modules',
         callback
     )
 });
