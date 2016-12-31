@@ -88,7 +88,7 @@ gulp.task('build', function (callback) {
 });
 
 /* Push build to gh-pages */
-gulp.task('deploy', ['build'], function () {
+gulp.task('deploy', function () {
     return gulp.src("./dist/**/*")
         .pipe(deploy({
             branch: 'master'
