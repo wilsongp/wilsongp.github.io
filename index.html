@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="MyApp" ng-strict-di>
+    <head>
+        <meta charset="utf-8">
+        <title>Greg Wilson</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" href="assets/images/logos/rel.ico.png">
+        <link rel="stylesheet" href="assets/style/app.css">
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    </head>
+
+    <body ng-cloak>
+        <banner></banner>
+        <div class="container-fluid">
+            <div class="row" id="wrapper">
+                <sidebar class="col-sm-3"></sidebar>
+                <div ng-view class="col-sm-9" id="content"></div>
+            </div>
+        </div>
+
+
+        <!-- Vendor -->
+        <script src='node_modules/angular/angular.js'></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- App -->
+        <script src="dist/js/all.min.js"></script>
+    </body>
+</html>

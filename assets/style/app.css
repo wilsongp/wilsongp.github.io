@@ -1,0 +1,224 @@
+html, body {
+    height: 100%;
+    min-width: 20em;
+}
+
+body > .container-fluid {
+    height: 100%;
+}
+
+.no-padding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#content {
+    padding: 1em;
+}
+
+.nav-collapse .nav > li {
+    display: inline-block;
+}
+
+.navbar-collapse {
+    text-align:center;
+}
+.navbar-nav {
+    display:inline-block;
+    float:none;
+}
+
+section[glam] {
+    height: 10em;
+    background-image: url(../images/header_lg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+sidebar {
+    max-width: 20em;
+    z-index: 1;
+}
+
+#sidebar-nav {
+    z-index: 1;
+}
+
+#nav-link-container {
+    border-radius: 0 !important;
+}
+
+.navbar-header {
+    text-align: center !important;
+}
+
+.navbar-header > span {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.navbar-toggle {
+    float: none !important;
+    margin-right: 0 !important;
+}
+
+#content {
+    height: 100%;
+}
+
+.banner-img {
+    height: 32px;
+}
+
+.banner-content {
+    /*	position: absolute;
+        z-index: 1000;
+        width: 100%;
+        margin-top: 1em;
+        font-family: "Helvetica",sans-serif;
+            text-transform: uppercase;
+            font-size: 2em;
+            color: darkgrey;*/
+
+    width: 100%;
+    padding: 0 1.5em;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 20;
+}
+.banner-content .banner-tag {
+    font-weight: 700;
+    margin-bottom: 2.5em;
+    text-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.banner-title {
+    font-size: 2em;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,.35);
+}
+.banner-tag {
+    font-size: 1.125em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+@media screen and (min-width: 541px){
+    .banner-content .banner-tag {
+        margin-bottom: 1em;
+    }
+
+    .banner-title {
+        font-size: 3em;
+        letter-spacing: 3px;
+    }
+}
+
+/*******************
+    Media Queries
+*******************/
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+    body,
+    .container-fluid {
+        overflow: hidden;
+    }
+
+    #content {
+        overflow: auto;
+        padding-bottom: 20em; /* Hacky way to account for header */
+    }
+
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+    }
+    .sidebar-nav .navbar ul:not {
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+
+/* Small Screen */
+@media screen and (max-width: 767px) {
+    #social-links > ul {
+        float: none !important;
+    }
+
+    sidebar { /* Keeps line from appearing above collapsed sidebar */
+        min-height: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all 0.25s ease-out;
+        -moz-transition: all 0.25s ease-out;
+        transition: all 0.25s ease-out;
+    }
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        right: -41.6%;
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -41.6%;
+    }
+    .row-offcanvas-right.active {
+        right: 41.6%;
+    }
+    .row-offcanvas-left.active {
+        left: 41.6%;
+    }
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 41.6%;
+    }
+}
+
+/* small */
+@media(min-width:768px) {
+    #wrapper,
+    #wrapper > sidebar,
+    #wrapper > sidebar > div,
+    #wrapper > sidebar > div > .navbar {
+        height: 100%;
+    }
+}
+
+/* medium */
+@media(min-width:1200px) {
+    section[glam] {
+        height: 15em;
+    }
+}
+
+/* large */
+@media(min-width:1648px) {
+    section[glam] {
+        height: 20em;
+    }
+}
