@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="MyApp" ng-strict-di>
+    <head>
+        <meta charset="utf-8">
+        <title>Greg Wilson</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" href="images/logos/rel.ico.png">
+        <link rel="stylesheet" href="assets/css/site.css">
+    </head>
+
+    <body ng-cloak>
+        <my-banner></my-banner>
+        <div class="container-fluid">
+            <div class="row" id="wrapper">
+                <my-sidebar class="col-sm-3"></my-sidebar>
+                <div ng-view class="col-sm-9" id="content"></div>
+            </div>
+        </div>
+
+
+        <script src="js/modules.js"></script>
+        <script src="js/all.min.js"></script>
+    </body>
+</html>
