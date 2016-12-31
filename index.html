@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <title>Greg Wilson</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="icon" href="assets/images/logos/rel.ico.png">
+        <link rel="icon" href="dist/images/logos/rel.ico.png">
+        <!-- build:css /css/site.css -->
         <link rel="stylesheet" href="assets/style/app.css">
-        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+        <!-- endbuild -->
     </head>
 
     <body ng-cloak>
@@ -20,12 +22,14 @@
         </div>
 
 
-        <!-- Vendor -->
+        <!-- build:js /js/modules.js -->
         <script src='node_modules/angular/angular.js'></script>
         <script src="node_modules/angular-route/angular-route.js"></script>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- App -->
-        <script src="dist/js/all.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- endbuild -->
+        <!-- build:js /js/all.min.js -->
+        <script src="app/all.js"></script>
+        <!-- endbuild -->
     </body>
 </html>
