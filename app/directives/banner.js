@@ -4,7 +4,7 @@ angular.module('myAppDep').directive('myBanner', function () {
     restrict: 'E',
     templateUrl: 'views/banner.html',
     scope: {},
-    link: function (scope, element, attrs, controllers) {
+    link: function (scope) {
         scope.logo = {
             alt: "Greg Wilson",
             href: "http://wilsongp.net",
