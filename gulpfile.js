@@ -34,7 +34,6 @@ gulp.task('browser-sync', function() {
 gulp.task('clean:dist', function() {
     return del.sync(['dist']);
 });
-
 gulp.task('clean:angular', function() {
     return del.sync(mainAppPath);
 });
@@ -50,7 +49,8 @@ gulp.task('concat-angular', ['clean:angular'], function() {
     return gulp.src([
         'app/app.js',
         'app/**/*.js',
-        '!app/**/*.spec.js'
+        '!app/**/*.spec.js',
+        'env/dev.js'
     ])
     .pipe(concat(mainFile))
     .pipe(gulp.dest(mainPath));
@@ -108,7 +108,16 @@ gulp.task('lint', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('app/**/*.js', ['lint', 'concat-angular']);
+    gulp.watch('app/**/*.js');
+});
+
+gulp.task('serve', function(callback) {
+    runSequence(
+        'concat-angular',
+        'browser-sync',
+        'watch',
+        callback
+    )
 });
 
 // Default Task

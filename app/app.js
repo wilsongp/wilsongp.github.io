@@ -2,4 +2,4 @@
 angular.module('MyApp', [ 'myAppDep']);
 
 // Faux lazy loader
-angular.module('myAppDep', ['ngRoute']);
+angular.module('myAppDep', ['ngRoute', 'ngResource']);
