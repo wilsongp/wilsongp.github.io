@@ -9,6 +9,7 @@ function myBanner(personalService) {
     templateUrl: 'views/banner.html',
     scope: {},
     link: function (scope) {
+        scope.links = [];
         scope.logo = {
             alt: "Greg Wilson",
             href: "http://wilsongp.net",
