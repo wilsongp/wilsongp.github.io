@@ -26,7 +26,6 @@ function myBanner(personalService) {
             personalService
                 .getAllResources(request)
                 .then(function(results) {
-                    console.log(results);
                     scope.links = results.data;
                 })
                 .catch(function (err) {
