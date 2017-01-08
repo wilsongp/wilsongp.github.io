@@ -95,10 +95,7 @@ gulp.task('deploy', ['build'], function () {
         }))
 });
 
-/*
- Base Tasks
- */
-
+/**** DEV Tasks ******/
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src('assets/scripts/*.js')
@@ -106,19 +103,34 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
-// Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch('app/**/*.js');
+gulp.task('reload-browser', function(callback) {
+    bs.reload();
+    callback();
 });
 
-gulp.task('serve', function(callback) {
+// Watch Files For Changes
+gulp.task('watch', function(callback) {
     runSequence(
         'concat-angular',
-        'browser-sync',
-        'watch',
+        'reload-browser',
         callback
-    )
+    );
+});
+
+gulp.task('serve', function() {
+    bs.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+
+    // add browserSync.reload to the tasks array to make
+    // all browsers reload after tasks are complete.
+    gulp.watch(
+        'app/**/*.js',
+        ['watch']
+    );
 });
 
 // Default Task
-gulp.task('default', ['concat-angular', 'watch']);
+gulp.task('default', ['concat-angular', 'watch', 'browser-sync']);

@@ -15,10 +15,13 @@
     <body ng-cloak>
         <my-banner></my-banner>
         <div class="container-fluid">
-            <div class="row" id="wrapper">
+            <div class="row" id="wrapper" style="height: 100%;">
                 <my-sidebar class="col-sm-3"></my-sidebar>
-                <div ng-view class="col-sm-9" id="content"></div>
+                <div class="col-sm-9" id="content">
+                    <div ng-view></div>
+                </div>
             </div>
+            <my-footer></my-footer>
         </div>
 
 
