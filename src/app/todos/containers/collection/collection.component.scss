@@ -1,0 +1,9 @@
+@import '~@wilsongp/common.assets/scss/mixins';
+
+app-todo {
+  margin-top: 1em;
+
+  @include md {
+    max-width: 45%;
+  }
+}

@@ -1,49 +1,33 @@
-// jshint strict: false
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/0.13/config/configuration-file.html
+
 module.exports = function (config) {
   config.set({
-
-    basePath: './',
-    preprocessors: {
-      'views/*.html': ['ng-html2js']
-    },
-    files: [
-        'node_modules/angular/angular.js',
-        'node_modules/angular-route/angular-route.js',
-        'node_modules/angular-resource/angular-resource.js',
-        'node_modules/angular-mocks/angular-mocks.js',
-        'app/app.js',
-        'env/dev.js',
-        'app/**/*.js',
-        'views/*.html'
+    basePath: '',
+    frameworks: ['jasmine', '@angular/cli'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage-istanbul-reporter'),
+      require('@angular/cli/plugins/karma')
     ],
-
+    client:{
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    coverageIstanbulReporter: {
+      reports: [ 'html', 'lcovonly' ],
+      fixWebpackSourcePaths: true
+    },
+    angularCli: {
+      environment: 'dev'
+    },
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
-    singleRun: false,
-
-    reporters: ['progress'],
-
-    frameworks: ['jasmine'],
-
-    browsers: ['Firefox'],
-
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-junit-reporter',
-      'karma-ng-html2js-preprocessor'
-    ],
-
-    junitReporter: {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    },
-
-    ngHtml2JsPreprocessor: {
-      moduleName: 'my.templates'
-    }
-
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false
   });
 };

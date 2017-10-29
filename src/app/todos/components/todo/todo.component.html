@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-subtitle>{{todo.createdDate | date:'short'}}</mat-card-subtitle>
+  <mat-card-title>{{todo.title}}</mat-card-title>
+  <mat-card-content>
+    <p>{{todo.body}}</p>
+  </mat-card-content>
+  <mat-card-actions align='end'>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

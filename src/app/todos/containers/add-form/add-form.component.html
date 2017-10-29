@@ -1,0 +1,11 @@
+<form [formGroup]="newTodoForm" (ngSubmit)="addTodo()" novalidate>
+  <mat-form-field>
+    <input matInput placeholder="Todo Title" formControlName="title" [formControl]="newTodoForm.controls.title" required>
+    <mat-error *ngIf="newTodoForm.controls.title.invalid">{{getErrorMessage(newTodoForm.controls.title)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Notes" formControlName="body" [formControl]="newTodoForm.controls.body" minlength="3">
+    <mat-error *ngIf="newTodoForm.controls.body.invalid">{{getErrorMessage(newTodoForm.controls.body)}}</mat-error>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="newTodoForm.invalid">Add Todo</button>
+</form>

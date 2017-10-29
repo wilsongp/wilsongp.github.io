@@ -1,0 +1,27 @@
+
+@import '~@wilsongp/common.assets/scss/mixins';
+
+mat-card {
+  background-image: url(https://wilsongp.github.io/assets/images/header_lg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 10rem;
+  color: #fff;
+}
+
+p {
+  font-size: 2rem;
+}
+
+@include md {
+  p {
+    font-size: 3rem;
+  }
+}
+
+@include lg {
+  p {
+    font-size: 5rem;
+  }
+}
