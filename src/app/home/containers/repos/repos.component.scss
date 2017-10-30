@@ -1,9 +1,10 @@
 @import '~@wilsongp/common.assets/scss/mixins';
 
-app-home {
-  margin-top: 1em;
+$min-carousel-height: 15em;
 
-  @include md {
-    max-width: 45%;
-  }
+.carousel-content,
+app-loading,
+app-error {
+  min-height: $min-carousel-height;
+  background-color: #ccc;
 }

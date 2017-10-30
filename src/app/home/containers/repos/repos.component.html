@@ -1,5 +1,19 @@
-<p *ngIf="pending$ | async">Loading...</p>
-<p *ngIf="error$ | async">{{error$}}</p>
-<div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="1em" fxLayout.lt-sm="column">
-  <div *ngFor="let repo of repos$ | async">{{repo.name}}</div>
-</div>
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let repo of repos$ | async">
+    <div class="carousel-content" fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <h2>{{repo.name}}</h2>
+    </div>
+    <div class="carousel-caption">
+      <p>Some details about the repo</p>
+    </div>
+  </ng-template>
+
+  <ng-template ngbSlide *ngIf="pending$ | async">
+      <app-loading message="Loading..." fxLayout="row wrap" fxLayoutAlign="space-around center">
+      </app-loading>
+  </ng-template>
+  <ng-template ngbSlide *ngIf="error$ | async">
+    <app-error [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
+    </app-error>
+  </ng-template>
+</ngb-carousel>

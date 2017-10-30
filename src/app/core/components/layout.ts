@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-layout',
   template: `
-    <div class="container-fluid">
+    <div class="container-fluid layout">
       <ng-content></ng-content>
     </div>
   `,
   styles: [
     `
-    mat-sidenav-container {
+    .layout {
+      padding: 0;
       background: rgba(0, 0, 0, 0.03);
     }
     *, /deep/ * {

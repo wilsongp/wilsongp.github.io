@@ -12,6 +12,7 @@ import { reducers } from './reducers';
 
 import { ReposComponent } from './containers/repos/repos.component';
 import { HomeComponent } from './containers/home';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './containers/home';
     ComponentsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    NgbModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent },
     ]),

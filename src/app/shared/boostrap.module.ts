@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  NgbModule
+  NgbModule, NgbCarouselConfig
 } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -10,6 +10,7 @@ import {
     CommonModule,
     NgbModule.forRoot()
   ],
+  declarations: [],
   exports: [
     NgbModule
   ]
