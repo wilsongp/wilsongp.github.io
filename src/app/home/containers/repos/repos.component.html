@@ -1,10 +1,13 @@
-<ngb-carousel *ngIf="repos$.length > 0 | async">
+<ngb-carousel>
   <ng-template ngbSlide *ngFor="let repo of repos$ | async">
-    <div class="carousel-content" fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <div class="carousel-content" fxLayout="column" fxLayoutAlign="space-around center">
       <h2>{{repo.name}}</h2>
+      <p>{{repo.description}}</p>
+      <p>
+        View on <a [href]="repo.url" target="__blank">Github</a>
+      </p>
     </div>
     <div class="carousel-caption">
-      <p>Some details about the repo</p>
     </div>
   </ng-template>
 </ngb-carousel>

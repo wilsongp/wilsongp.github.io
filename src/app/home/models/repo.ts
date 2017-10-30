@@ -1,9 +1,6 @@
 export interface Repo {
   name: string;
-}
-
-export function generateMockTodo(): Repo {
-  return {
-    name: 'Test repo name'
-  };
+  description: string;
+  homepageUrl: string;
+  url: string;
 }

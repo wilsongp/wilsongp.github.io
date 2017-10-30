@@ -2,6 +2,10 @@
 
 $min-carousel-height: 15em;
 
+.carousel-content {
+  padding: 2rem 0;
+}
+
 .carousel-content,
 app-loading,
 app-error {

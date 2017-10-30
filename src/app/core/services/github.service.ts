@@ -16,7 +16,10 @@ query {
       first: 5,
       orderBy: {field: PUSHED_AT, direction: DESC}) {
       nodes {
-        name
+        name,
+        description,
+        homepageUrl,
+        url
       }
     }
   }
