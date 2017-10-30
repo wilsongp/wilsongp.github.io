@@ -10,12 +10,7 @@ import * as layout from '../actions/layout';
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-layout>
-      <app-sidenav [open]="showSidenav$ | async">
-        <app-nav-item (navigate)="closeSidenav()" routerLink="/" icon="book" hint="Router link">
-          Some Nav Link
-        </app-nav-item>
-      </app-sidenav>
+    <app-layout fxLayout="column">
       <app-toolbar (openMenu)="openSidenav()">
       </app-toolbar>
       <app-banner></app-banner>

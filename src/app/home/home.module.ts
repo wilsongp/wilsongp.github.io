@@ -6,12 +6,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ComponentsModule } from './components';
-import { TodoEffects } from './effects/todo';
+import { RepoEffects } from './effects/repo';
 
 import { reducers } from './reducers';
-import { CollectionComponent } from './containers/collection/collection.component';
-import { AddFormComponent } from './containers/add-form/add-form.component';
-import { MaterialModule } from '../shared/material.module';
+import { ReposComponent } from './containers/repos/repos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,10 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ComponentsModule,
     FlexLayoutModule,
-    MaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '', component: CollectionComponent },
+      { path: '', component: ReposComponent },
     ]),
 
     /**
@@ -41,11 +38,12 @@ import { ReactiveFormsModule } from '@angular/forms';
      * All Effects will only be instantiated once regardless of
      * whether they are registered once or multiple times.
      */
-    EffectsModule.forFeature([TodoEffects]),
+    EffectsModule.forFeature([
+      RepoEffects
+    ]),
   ],
   declarations: [
-    CollectionComponent,
-    AddFormComponent
+    ReposComponent
   ],
   providers: [],
 })

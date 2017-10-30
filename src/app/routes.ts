@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/containers/page-not-found';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/todos', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'todos',
-    loadChildren: './todos/todos.module#TodosModule'
+    path: 'home',
+    loadChildren: './core/containers/core.module#CoreModule'
   },
   { path: '**', component: PageNotFoundComponent },
 ];

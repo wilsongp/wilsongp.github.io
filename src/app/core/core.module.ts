@@ -6,10 +6,8 @@ import { AppComponent } from './containers/app';
 import { PageNotFoundComponent } from './containers/page-not-found';
 import { LayoutComponent } from './components/layout';
 import { NavItemComponent } from './components/nav-item';
-import { SidenavComponent } from './components/sidenav';
 import { ToolbarComponent } from './components/toolbar';
 
-import { TodosService } from './services/todos.service';
 import { MaterialModule } from '../shared/material.module';
 import { BannerComponent } from './components/banner';
 
@@ -18,15 +16,13 @@ export const COMPONENTS = [
   PageNotFoundComponent,
   LayoutComponent,
   NavItemComponent,
-  SidenavComponent,
   ToolbarComponent,
   BannerComponent
 ];
 
 export const IMPORTS = [
   CommonModule,
-  RouterModule,
-  MaterialModule
+  RouterModule
 ];
 
 @NgModule({
@@ -38,7 +34,7 @@ export class CoreModule {
   static forRoot() {
     return {
       ngModule: CoreModule,
-      providers: [TodosService],
+      providers: [],
     };
   }
 }

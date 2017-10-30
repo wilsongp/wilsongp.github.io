@@ -10,6 +10,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
       <ng-content></ng-content>
     </mat-toolbar>
   `,
+  styles: [`
+    mat-toolbar {
+    }
+  `]
 })
 export class ToolbarComponent {
   @Output() openMenu = new EventEmitter();
