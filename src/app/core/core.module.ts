@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ApolloClient } from 'apollo-client';
+import { ApolloModule } from 'apollo-angular';
+
 import { AppComponent } from './containers/app';
 import { PageNotFoundComponent } from './containers/page-not-found';
 import { LayoutComponent } from './components/layout';

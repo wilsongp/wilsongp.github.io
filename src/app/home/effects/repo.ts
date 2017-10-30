@@ -32,7 +32,8 @@ export class RepoEffects {
       return this.githubService
         .searchRepos(query)
         .takeUntil(nextSearch$)
-        .map((todos: Repo[]) => new repo.SearchComplete(todos))
+        .map(response => response.repositories.nodes)
+        .map((repos: Repo[]) => new repo.SearchComplete(repos))
         .catch(err => of(new repo.SearchError(err)));
     });
 

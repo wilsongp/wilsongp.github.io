@@ -1,4 +1,4 @@
-<ngb-carousel>
+<ngb-carousel *ngIf="repos$.length > 0 | async">
   <ng-template ngbSlide *ngFor="let repo of repos$ | async">
     <div class="carousel-content" fxLayout="row wrap" fxLayoutAlign="space-around center">
       <h2>{{repo.name}}</h2>
@@ -7,13 +7,9 @@
       <p>Some details about the repo</p>
     </div>
   </ng-template>
-
-  <ng-template ngbSlide *ngIf="pending$ | async">
-      <app-loading message="Loading..." fxLayout="row wrap" fxLayoutAlign="space-around center">
-      </app-loading>
-  </ng-template>
-  <ng-template ngbSlide *ngIf="error$ | async">
-    <app-error [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    </app-error>
-  </ng-template>
 </ngb-carousel>
+
+<app-loading *ngIf="loading$ | async" message="Loading..." fxLayout="row wrap" fxLayoutAlign="space-around center">
+</app-loading>
+<app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
+</app-error>

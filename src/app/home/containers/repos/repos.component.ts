@@ -13,12 +13,12 @@ import { Repo } from '../../models/repo';
 })
 export class ReposComponent implements OnInit {
   repos$: Observable<Repo[]>;
-  pending$: Observable<boolean>;
+  loading$: Observable<boolean>;
   error$: Observable<string>;
 
   constructor(private store: Store<fromHome.State>) {
     this.repos$ = store.select(fromHome.getReposEntitiesState);
-    this.pending$ = store.select(fromHome.getReposLoadingState);
+    this.loading$ = store.select(fromHome.getReposLoadingState);
     this.error$ = store.select(fromHome.getReposErrorState);
   }
 

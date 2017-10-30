@@ -25,7 +25,7 @@ export function reducer( state = initialState, action: repo.Actions ): State {
     case repo.SEARCH:
       return Object.assign({}, state, {loading: true, error: null});
     case repo.SEARCH_COMPLETE:
-      return Object.assign({}, state, {loading: false, data: action.payload});
+      return Object.assign({}, state, {loading: false, data: action.payload, error: null});
     case repo.SEARCH_ERROR:
       return Object.assign({}, state, {loading: false, error: action.payload});
     default:

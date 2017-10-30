@@ -3,18 +3,35 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
+
+import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import gql from 'graphql-tag';
+
 import { Repo } from '../../home/models/repo';
 
-const generateRepos = (max: number) => {
-  const repos: Repo[] = [];
-  for (let i = 0; i < max; i++) {
-    repos.push({
-      name: `Test Repo ${i}`
-    });
+const RepositoresQuery = gql`
+query {
+  repositoryOwner(login: "wilsongp") {
+    repositories(
+      first: 5,
+      orderBy: {field: PUSHED_AT, direction: DESC}) {
+      nodes {
+        name
+      }
+    }
   }
+}
+`;
 
-  return repos;
-};
+interface RepositoriesResponse {
+  repositoryOwner
+}
+
+interface RepositorySearchResponse {
+  repositories: {
+    nodes: Repo[]
+  }
+}
 
 export interface RepositoryOrderByField {
   field: string;
@@ -29,7 +46,13 @@ export interface RepositorySearchFields {
 @Injectable()
 export class GithubService {
 
-  searchRepos(search: RepositorySearchFields) {
-    return Observable.timer(1000).mapTo(generateRepos(10));
+  constructor(private apollo: Apollo) {}
+
+  searchRepos(search: RepositorySearchFields): Observable<RepositorySearchResponse> {
+    return this.apollo
+      .watchQuery<RepositoriesResponse>({
+        query: RepositoresQuery
+      })
+      .map(response => response.data.repositoryOwner);
   }
 }

@@ -14,6 +14,7 @@ import {
 
 import { CoreModule } from './core/core.module';
 import { BootstrapModule } from './shared/boostrap.module';
+import { ApolloClientModule } from './shared/apollo.module';
 
 import { routes } from './routes';
 import { reducers, metaReducers } from './reducers';
@@ -29,6 +30,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpModule,
     BootstrapModule,
+    ApolloClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,
