@@ -13,6 +13,7 @@ import {
 } from '@ngrx/router-store';
 
 import { CoreModule } from './core/core.module';
+import { BootstrapModule } from './shared/boostrap.module';
 
 import { routes } from './routes';
 import { reducers, metaReducers } from './reducers';
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    BootstrapModule,
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,

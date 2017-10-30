@@ -12,16 +12,19 @@ import * as fromRouter from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 import * as fromLayout from '../core/reducers/layout';
+import * as fromToolbar from '../core/reducers/toolbar';
 import * as fromRepos from '../home/reducers/repos';
 
 export interface State {
   layout: fromLayout.State;
+  toolbar: fromToolbar.State;
   repos: fromRepos.State;
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State> = {
   layout: fromLayout.reducer,
+  toolbar: fromToolbar.reducer,
   repos: fromRepos.reducer,
   routerReducer: fromRouter.routerReducer
 };
@@ -41,9 +44,15 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
   : [];
 
 export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
+export const getToolbarState = createFeatureSelector<fromToolbar.State>('toolbar');
 export const getReposState = createFeatureSelector<fromRepos.State>('repos');
 
-export const getShowSidenav = createSelector(
+export const getShowNav = createSelector(
+  getToolbarState,
+  fromToolbar.getShowNav
+);
+
+export const getShowSideNav = createSelector(
   getLayoutState,
   fromLayout.getShowSidenav
 );

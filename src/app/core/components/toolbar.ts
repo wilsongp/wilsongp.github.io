@@ -1,11 +1,17 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
   template: `
-    <div class="toolbar">
-      <ng-content></ng-content>
-    </div>
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Fixed top</a>
+      <button class="navbar-toggler" type="button" aria-expanded="false" (click)="toggleMenu.emit()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText" [ngbCollapse]="!isCollapsed">
+        <ng-content></ng-content>
+      </div>
+    </nav>
   `,
   styles: [`
     mat-toolbar {
@@ -13,5 +19,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
   `]
 })
 export class ToolbarComponent {
-  @Output() openMenu = new EventEmitter();
+  @Output() toggleMenu = new EventEmitter();
+  @Input() isCollapsed = false;
 }

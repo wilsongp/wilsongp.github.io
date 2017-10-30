@@ -5,9 +5,16 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import { Repo } from '../../home/models/repo';
 
-const repos: Repo[] = [
-  { name: '**Some Random Repository name**' }
-];
+const generateRepos = (max: number) => {
+  const repos: Repo[] = [];
+  for (let i = 0; i < max; i++) {
+    repos.push({
+      name: `Test Repo ${i}`
+    });
+  }
+
+  return repos;
+};
 
 export interface RepositoryOrderByField {
   field: string;
@@ -23,6 +30,6 @@ export interface RepositorySearchFields {
 export class GithubService {
 
   searchRepos(search: RepositorySearchFields) {
-    return Observable.timer(1000).mapTo(repos);
+    return Observable.timer(1000).mapTo(generateRepos(10));
   }
 }

@@ -10,6 +10,7 @@ import { ToolbarComponent } from './components/toolbar';
 import { BannerComponent } from './components/banner';
 
 import { GithubService } from './services/github.service';
+import { BootstrapModule } from '../shared/boostrap.module';
 
 export const COMPONENTS = [
   AppComponent,
@@ -22,7 +23,8 @@ export const COMPONENTS = [
 
 export const IMPORTS = [
   CommonModule,
-  RouterModule
+  RouterModule,
+  BootstrapModule
 ];
 
 @NgModule({

@@ -4,14 +4,25 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
-import * as layout from '../actions/layout';
+import * as toolbar from '../actions/toolbar';
 
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-layout fxLayout="column">
-      <app-toolbar (openMenu)="openSidenav()">
+      <app-toolbar (toggleMenu)="toggleNav()" [isCollapsed]="showNav$ | async" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
       </app-toolbar>
       <app-banner></app-banner>
       <router-outlet></router-outlet>
@@ -19,28 +30,14 @@ import * as layout from '../actions/layout';
   `,
 })
 export class AppComponent {
-  showSidenav$: Observable<boolean>;
+  showNav$: Observable<boolean>;
   loggedIn$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>) {
-    /**
-     * Selectors can be applied with the `select` operator which passes the state
-     * tree to the provided selector
-     */
-    this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
+    this.showNav$ = this.store.select(fromRoot.getShowNav);
   }
 
-  closeSidenav() {
-    /**
-     * All state updates are handled through dispatched actions in 'container'
-     * components. This provides a clear, reproducible history of state
-     * updates and user interaction through the life of our
-     * application.
-     */
-    this.store.dispatch(new layout.CloseSidenav());
-  }
-
-  openSidenav() {
-    this.store.dispatch(new layout.OpenSidenav());
+  toggleNav() {
+    this.store.dispatch(new toolbar.ToggleNav());
   }
 }
