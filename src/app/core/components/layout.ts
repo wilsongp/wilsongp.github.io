@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-layout',
   template: `
-    <div class="container">
+    <div class="container-fluid">
       <ng-content></ng-content>
     </div>
   `,
