@@ -1,5 +1,5 @@
 <p *ngIf="pending$ | async">Loading...</p>
 <p *ngIf="error$ | async">{{error$}}</p>
 <div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="1em" fxLayout.lt-sm="column">
-    Repos Content
+  <div *ngFor="let repo of repos$ | async">{{repo.name}}</div>
 </div>

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 import { Repo } from '../../home/models/repo';
 
 const repos: Repo[] = [
-  { name: 'TEST REPO NAME' }
+  { name: '**Some Random Repository name**' }
 ];
 
 export interface RepositoryOrderByField {

@@ -20,10 +20,6 @@ export class ReposComponent implements OnInit {
     this.repos$ = store.select(fromHome.getReposEntitiesState);
     this.pending$ = store.select(fromHome.getReposLoadingState);
     this.error$ = store.select(fromHome.getReposErrorState);
-    this.store.dispatch(new repos.Search({
-      first: 5,
-      orderBy: { field: 'PUSHED_AT', direction: 'DESC' }
-    }));
   }
 
   ngOnInit() {
