@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-layout',
   template: `
-    <mat-sidenav-container fullscreen>
+    <div class="container">
       <ng-content></ng-content>
-    </mat-sidenav-container>
+    </div>
   `,
   styles: [
     `

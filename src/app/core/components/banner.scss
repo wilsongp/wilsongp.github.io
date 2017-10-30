@@ -1,7 +1,7 @@
 
 @import '~@wilsongp/common.assets/scss/mixins';
 
-mat-card {
+.card {
   background-image: url(https://wilsongp.github.io/assets/images/header_lg.jpg);
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@ mat-card {
   color: #fff;
 }
 
-mat-card-content {
+.content {
   text-align: center;
 }
 

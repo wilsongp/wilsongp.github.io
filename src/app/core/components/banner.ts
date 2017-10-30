@@ -3,12 +3,12 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-banner',
   template: `
-  <mat-card  fxLayout="column" fxLayoutAlign="center center" >
-    <mat-card-content>
+  <div class="card" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card-content">
       <p>Greg Wilson</p>
       <span>Software Engineer</span>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
   `,
   styleUrls: ['./banner.scss']
 })

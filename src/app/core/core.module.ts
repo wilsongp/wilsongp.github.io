@@ -7,9 +7,9 @@ import { PageNotFoundComponent } from './containers/page-not-found';
 import { LayoutComponent } from './components/layout';
 import { NavItemComponent } from './components/nav-item';
 import { ToolbarComponent } from './components/toolbar';
-
-import { MaterialModule } from '../shared/material.module';
 import { BannerComponent } from './components/banner';
+
+import { GithubService } from './services/github.service';
 
 export const COMPONENTS = [
   AppComponent,
@@ -34,7 +34,9 @@ export class CoreModule {
   static forRoot() {
     return {
       ngModule: CoreModule,
-      providers: [],
+      providers: [
+        GithubService
+      ],
     };
   }
 }

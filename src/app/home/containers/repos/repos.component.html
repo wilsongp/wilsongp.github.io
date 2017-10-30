@@ -1,10 +1,5 @@
-<mat-card fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1em">
-  <mat-card-content>
-      <app-add-form></app-add-form>
-  </mat-card-content>
-</mat-card>
 <p *ngIf="pending$ | async">Loading...</p>
 <p *ngIf="error$ | async">{{error$}}</p>
 <div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="1em" fxLayout.lt-sm="column">
-    <app-home [home]="home" *ngFor="let home of todos$ | async"></app-home>
+    Repos Content
 </div>

@@ -7,9 +7,9 @@ import { Observable } from 'rxjs/Observable';
 import { Repo } from '../../models/repo';
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.scss']
+  selector: 'app-repos',
+  templateUrl: './repos.component.html',
+  styleUrls: ['./repos.component.scss']
 })
 export class ReposComponent implements OnInit {
   repos$: Observable<Repo[]>;

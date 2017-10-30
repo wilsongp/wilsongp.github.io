@@ -3,10 +3,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-nav-item',
   template: `
-    <a mat-list-item [routerLink]="routerLink" (click)="navigate.emit()">
-      <mat-icon mat-list-icon>{{ icon }}</mat-icon>
-      <span mat-line><ng-content></ng-content></span>
-      <span mat-line class="secondary">{{ hint }}</span>
+    <!--<a mat-list-item [routerLink]="routerLink" (click)="navigate.emit()">-->
+    <a [routerLink]="routerLink" (click)="navigate.emit()">
+      <span>{{ icon }}</span>
+      <span><ng-content></ng-content></span>
+      <span class="secondary">{{ hint }}</span>
     </a>
   `,
   styles: [

@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentsModule } from './components';
 import { RepoEffects } from './effects/repo';
-
 import { reducers } from './reducers';
+
 import { ReposComponent } from './containers/repos/repos.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './containers/home';
 
 @NgModule({
   imports: [
@@ -19,32 +20,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '', component: ReposComponent },
+      { path: '', component: HomeComponent },
     ]),
-
-    /**
-     * StoreModule.forFeature is used for composing state
-     * from feature modules. These modules can be loaded
-     * eagerly or lazily and will be dynamically added to
-     * the existing state.
-     */
-    StoreModule.forFeature('todos', reducers),
-
-    /**
-     * Effects.forFeature is used to register effects
-     * from feature modules. Effects can be loaded
-     * eagerly or lazily and will be started immediately.
-     *
-     * All Effects will only be instantiated once regardless of
-     * whether they are registered once or multiple times.
-     */
+    StoreModule.forFeature('repos', reducers),
     EffectsModule.forFeature([
       RepoEffects
     ]),
   ],
   declarations: [
+    HomeComponent,
     ReposComponent
   ],
   providers: [],
 })
-export class TodosModule {}
+export class HomeModule {}
