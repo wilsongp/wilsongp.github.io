@@ -6,11 +6,28 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CommonModule } from '@angular/common';
 
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface({
-    uri: 'https://api.github.com/graphql'
-  }),
+import { environment } from './../../environments/environment';
+
+const networkInterface = createNetworkInterface({
+  uri: 'https://api.github.com/graphql',
+  opts: {
+    credentials: 'include',
+  }
 });
+
+networkInterface.use([{
+  applyMiddleware(req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {};  // Create the header object if needed.
+    }
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token');
+    req.options.headers.authorization = token ? `Bearer ${token}` : null;
+    next();
+  }
+}]);
+
+const client = new ApolloClient({ networkInterface });
 
 export function provideClient(): ApolloClient {
   return client;
