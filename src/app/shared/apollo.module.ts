@@ -1,4 +1,7 @@
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
+import { InMemoryCache, NormalizedCache } from 'apollo-cache-inmemory';
 import { ApolloModule } from 'apollo-angular';
 
 import { NgModule } from '@angular/core';
@@ -8,24 +11,29 @@ import { CommonModule } from '@angular/common';
 
 import { environment } from './../../environments/environment';
 
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.github.com/graphql'
+const httpLink = createHttpLink({
+  uri: environment.githubApiUrl,
 });
 
-networkInterface.use([{
-  applyMiddleware(req, next) {
-    if (!req.options.headers) {
-      req.options.headers = {
-        authorization: `Bearer ${environment.githubApiToken}`
-      };  // Create the header object if needed.
+// return the headers to the context so httpLink can read them
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : null,
     }
-    next();
-  }
-}]);
+  };
+});
 
-const client = new ApolloClient({ networkInterface });
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    cacheResolvers: {}
+  })
+});
 
-export function provideClient(): ApolloClient {
+export function provideClient(): ApolloClient<NormalizedCache> {
   return client;
 }
 
