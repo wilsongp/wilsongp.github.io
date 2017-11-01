@@ -29,7 +29,7 @@ export class RepoEffects {
     .map(action => action.payload)
     .switchMap((query: RepositorySearchFields) => {
       const nextSearch$ = this.actions$.ofType(repo.SEARCH).skip(1);
-      return this.githubService
+      return this.GithubService
         .searchRepos(query)
         .takeUntil(nextSearch$)
         .map(response => response.repositories.nodes)
@@ -39,7 +39,7 @@ export class RepoEffects {
 
   constructor(
     private actions$: Actions,
-    private githubService: GithubService,
+    private GithubService: GithubService,
     @Optional()
     @Inject(SEARCH_DEBOUNCE)
     private debounce: number = 300,

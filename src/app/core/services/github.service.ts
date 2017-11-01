@@ -8,6 +8,7 @@ import { Apollo, ApolloQueryObservable } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 import { Repo } from '../../home/models/repo';
+import { ApolloQueryResult } from 'apollo-client';
 
 const RepositoresQuery = gql`
 query {
@@ -27,13 +28,13 @@ query {
 `;
 
 interface RepositoriesResponse {
-  repositoryOwner
+  repositoryOwner: RepositorySearchResponse;
 }
 
 interface RepositorySearchResponse {
   repositories: {
     nodes: Repo[]
-  }
+  };
 }
 
 export interface RepositoryOrderByField {
