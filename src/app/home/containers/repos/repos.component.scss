@@ -1,14 +1,14 @@
 @import '~@wilsongp/common.assets/scss/mixins';
 
-$min-carousel-height: 15em;
+$min-repo-height: 10rem;
 
-.carousel-content {
-  padding: 2rem 0;
+ngb-tabset {
+  min-height: $min-repo-height;
 }
 
-.carousel-content,
 app-loading,
 app-error {
-  min-height: $min-carousel-height;
-  background-color: #ccc;
+  width: 100%;
+  min-height: 3rem;
+  background: transparent;
 }

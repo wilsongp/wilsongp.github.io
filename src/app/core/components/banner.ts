@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-banner',
   template: `
-  <div class="card" fxLayout="column" fxLayoutAlign="center center">
-    <div class="card-content">
+  <div class="banner" fxLayout="column wrap" fxLayoutAlign="center center">
+    <div class="banner-content" fxFill>
       <p>Greg Wilson</p>
       <span>Software Engineer</span>
     </div>

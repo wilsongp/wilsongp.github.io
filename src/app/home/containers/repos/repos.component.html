@@ -1,18 +1,17 @@
-<ngb-carousel>
-  <ng-template ngbSlide *ngFor="let repo of repos$ | async">
-    <div class="carousel-content" fxLayout="column" fxLayoutAlign="space-around center">
-      <h2>{{repo.name}}</h2>
-      <p>{{repo.description}}</p>
-      <p>
-        View on <a [href]="repo.url" target="__blank">Github</a>
-      </p>
-    </div>
-    <div class="carousel-caption">
-    </div>
-  </ng-template>
-</ngb-carousel>
+<div class="repository-container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1rem">
+  <h2>Projects</h2>
+  <app-loading *ngIf="loading$ | async" message="Loading ..." fxLayout="row wrap" fxLayoutAlign="space-around center">
+  </app-loading>
+  <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
+  </app-error>
+  <ngb-tabset>
+    <ngb-tab *ngFor="let repo of repos$ | async">
+      <ng-template ngbTabTitle>{{repo.name}}</ng-template>
+      <ng-template ngbTabContent>
+        <p>{{repo.description}}</p>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
 
-<app-loading *ngIf="loading$ | async" message="Loading..." fxLayout="row wrap" fxLayoutAlign="space-around center">
-</app-loading>
-<app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
-</app-error>
+

@@ -1,7 +1,7 @@
 
 @import '~@wilsongp/common.assets/scss/mixins';
 
-.card {
+.banner {
   background-image: url(https://wilsongp.github.io/assets/images/header_lg.jpg);
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@
   color: #fff;
 }
 
-.content {
+.banner-content {
   text-align: center;
 }
 
@@ -18,14 +18,21 @@ p {
   font-size: 2rem;
 }
 
+
 @include md {
   p {
     font-size: 3rem;
+  }
+  .banner {
+    min-height: 15rem;
   }
 }
 
 @include lg {
   p {
     font-size: 5rem;
+  }
+  .banner {
+    min-height: 20rem;
   }
 }

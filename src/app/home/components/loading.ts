@@ -6,11 +6,16 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-loading',
   template: `
-  <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <h2>{{message}}</h2>
+  <div class="app-loading" fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <ngb-progressbar value="100" type="info" striped="true" animated="true">{{message}}</ngb-progressbar>
   </div>
   `,
-  styles: []
+  styles: [`
+    .app-loading{
+      width: 100%;
+      padding: 1rem;
+    }
+  `]
 })
 export class LoadingComponent implements OnInit {
   @Input() message = '';

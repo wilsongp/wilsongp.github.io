@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ErrorComponent } from './error';
 import { LoadingComponent } from './loading';
+import { BootstrapModule } from '../../shared/boostrap.module';
 
 export const COMPONENTS = [
   ErrorComponent,
@@ -14,7 +15,8 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    BootstrapModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
