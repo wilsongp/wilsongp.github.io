@@ -6,6 +6,7 @@ import { RepositorySearchFields } from '../../core/services/github.service';
 export const SEARCH = '[Repo] Search';
 export const SEARCH_COMPLETE = '[Repo] Search Complete';
 export const SEARCH_ERROR = '[Repo] Search Error';
+export const SELECT_REPO = '[Repo] Select Repo';
 
 export class Search implements Action {
   readonly type = SEARCH;
@@ -25,4 +26,10 @@ export class SearchError implements Action {
   constructor(public payload: string) {}
 }
 
-export type Actions = Search | SearchComplete | SearchError;
+export class SelectRepo implements Action {
+  readonly type = SELECT_REPO;
+
+  constructor(public payload: string) {}
+}
+
+export type Actions = Search | SearchComplete | SearchError | SelectRepo;

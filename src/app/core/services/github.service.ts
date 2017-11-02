@@ -20,9 +20,10 @@ query {
       privacy: PUBLIC
     ) {
       nodes {
-        name
-        description
-        homepageUrl
+        id,
+        name,
+        description,
+        homepageUrl,
         url,
         primaryLanguage {
           name,
@@ -62,29 +63,43 @@ export class GithubService {
   constructor(private apollo: Apollo) {}
 
   searchRepos(search: RepositorySearchFields): Observable<RepositorySearchResponse> {
-    //return Observable.of(fakeResponse());
+    return Observable.of(fakeResponse());
 
-    return this.apollo
-      .watchQuery<RepositoriesResponse>({
-        query: RepositoresQuery
-      })
-      .map(response => response.data.repositoryOwner);
+    // return this.apollo
+    //   .watchQuery<RepositoriesResponse>({
+    //     query: RepositoresQuery
+    //   })
+    //   .map(response => response.data.repositoryOwner);
   }
 }
 
 function fakeResponse() {
   return {
     repositories: {
-      nodes: [{
-        name: 'TEST NAME',
-        description: 'DESCRIPTION',
-        homepageUrl: 'www.test.com',
-        url: 'www.url.com',
-        primaryLanguage: {
-          name: 'Javascript',
-          color: '#ccc'
+      nodes: [
+        {
+          id: '1234',
+          name: 'Test Repo 1',
+          description: 'DESCRIPTION 1',
+          homepageUrl: 'www.test.com',
+          url: 'www.url.com',
+          primaryLanguage: {
+            name: 'Javascript',
+            color: '#ccc'
+          }
+        },
+        {
+          id: '45678',
+          name: 'Test Repo 2',
+          description: 'DESCRIPTION 2',
+          homepageUrl: 'www.test.com',
+          url: 'www.url.com',
+          primaryLanguage: {
+            name: 'Javascript',
+            color: '#ccc'
+          }
         }
-      }]
+    ]
     }
   };
 }

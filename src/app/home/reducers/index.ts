@@ -21,3 +21,16 @@ export const getReposLoadingState = createSelector(
   getReposState,
   state => state.loading
 );
+
+export const getSelectedRepoId = createSelector(
+  getReposState,
+  fromRepos.getSelectedId
+);
+
+export const getSelectedRepo = createSelector(
+  getReposEntitiesState,
+  getSelectedRepoId,
+  (entities, selectedId) => {
+    return selectedId && entities.find(entity => entity.id === selectedId);
+  }
+);

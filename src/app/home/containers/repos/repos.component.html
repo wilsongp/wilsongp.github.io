@@ -1,17 +1,28 @@
 <div class="repository-container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1rem">
   <h2>Projects</h2>
-  <app-loading *ngIf="loading$ | async" message="Loading ..." fxLayout="row wrap" fxLayoutAlign="space-around center">
-  </app-loading>
-  <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
-  </app-error>
-  <ngb-tabset>
-    <ngb-tab *ngFor="let repo of repos$ | async">
-      <ng-template ngbTabTitle>{{repo.name}}</ng-template>
-      <ng-template ngbTabContent>
-        <p>{{repo.description}}</p>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+  <div class="row" fxFill>
+
+    <app-loading *ngIf="loading$ | async" message="Loading ..." fxLayout="row wrap" fxLayoutAlign="space-around center">
+    </app-loading>
+    <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
+    </app-error>
+
+    <div class="col-xs-3"> <!-- required for floating -->
+      <!-- Nav tabs -->
+      <nav class="nav flex-column" *ngFor="let repo of repos$ | async">
+        <a class="nav-link active" href="#" (click)="selectRepo(repo.id)">{{repo.name}}</a>
+      </nav>
+    </div>
+    <div class="col">
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div *ngIf="_selected" class="tab-pane active" id="home">
+            {{_selected.name}}
+            <p><strong>TODO:</strong> Replace me with a component</p>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
 

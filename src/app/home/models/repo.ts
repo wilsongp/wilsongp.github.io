@@ -1,4 +1,5 @@
 export interface Repo {
+  id: string;
   name: string;
   description: string;
   homepageUrl: string;
