@@ -1,13 +1,47 @@
 
 @import '~@wilsongp/common.assets/scss/mixins';
+@import '~@wilsongp/common.assets/scss/variables';
+
+
+@mixin dark-overlay{
+  &:after{
+    content: "";
+    width: 50%;
+    height: auto;
+    position: absolute;
+    z-index: -1;  // Take note of this negative z-index and compare to each article's positive z-index. This helps your content to show up over the overlay.
+    top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+  }
+}
+
+$base-gradient: 40vw;
+$base-gradient-md: 50vw;
+$base-gradient-lg: 65vw;
+
+$banner-height: 100vh;
+$baner-height-md: 80vh;
+$baner-height-lg: 85vh;
+
+$bg-size: cover;
+$bg-size-md: contain, cover;
+$bg-size-lg: auto;
+$bg-position: right;
+$bg-repeat: no-repeat;
+
+$bg-mobile: url(https://wilsongp.github.io/assets/images/header_lg.jpg);
+$background-image-url: url(https://i.pinimg.com/736x/db/ab/2c/dbab2c1db91a8faa1ffa207aff58a554--baby-corgi-corgi-pups.jpg);
 
 .banner {
-  background-image: url(https://wilsongp.github.io/assets/images/header_lg.jpg);
+  min-height: $banner-height;
+  background-image: $bg-mobile;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  min-height: 10rem;
-  color: #fff;
+  background-repeat: $bg-repeat;
+
+  text-transform: uppercase;
 }
 
 .banner-content {
@@ -18,13 +52,35 @@ p {
   font-size: 2rem;
 }
 
+@media (max-width: #{$screen-sm-min}) {
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.35);
+}
+
+@include sm {
+  p {
+    font-size: 3rem;
+  }
+  .banner {
+    min-height: $banner-height;
+    background: linear-gradient(to right, #fff $base-gradient, transparent), $background-image-url;
+    background-size: $bg-size-md;
+    background-position: $bg-position;
+    background-repeat: $bg-repeat;
+  }
+}
 
 @include md {
   p {
     font-size: 3rem;
   }
   .banner {
-    min-height: 15rem;
+    min-height: $baner-height-md;
+    background: linear-gradient(to right, #fff $base-gradient-md, transparent), $background-image-url;
+    background-size: $bg-size-lg;
+    background-position: $bg-position;
+    background-repeat: $bg-repeat;
   }
 }
 
@@ -33,6 +89,10 @@ p {
     font-size: 5rem;
   }
   .banner {
-    min-height: 20rem;
+    min-height: $baner-height-lg;
+    background: linear-gradient(to right, #fff $base-gradient-lg, transparent), $background-image-url;
+    background-size: $bg-size-lg;
+    background-position: $bg-position;
+    background-repeat: $bg-repeat;
   }
 }
