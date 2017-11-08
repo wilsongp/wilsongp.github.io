@@ -6,36 +6,12 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 
 import { Apollo, ApolloQueryObservable } from 'apollo-angular';
-import gql from 'graphql-tag';
-
-import { Repo } from '../../home/models/repo';
 import { ApolloQueryResult } from 'apollo-client';
 
-const RepositoresQuery = gql`
-query {
-  repositoryOwner(login: "wilsongp") {
-    repositories(
-      first: 5,
-      orderBy: {field: PUSHED_AT, direction: DESC},
-      privacy: PUBLIC
-    ) {
-      nodes {
-        id,
-        name,
-        description,
-        homepageUrl,
-        url,
-        primaryLanguage {
-          name,
-          color
-        }
-      },
-      totalCount,
-      totalDiskUsage
-    }
-  }
-}
-`;
+import * as queries from './github.queries';
+import { Repo } from '../../home/models/repo';
+
+import * as MockData from './data/github.mocks';
 
 interface RepositoriesResponse {
   repositoryOwner: RepositorySearchResponse;
@@ -63,43 +39,15 @@ export class GithubService {
   constructor(private apollo: Apollo) {}
 
   searchRepos(search: RepositorySearchFields): Observable<RepositorySearchResponse> {
-    return Observable.of(fakeResponse());
+    const baseQuery = queries.repositoryOwnerQuery('wilsongp');
+
+    return Observable.of(MockData.repositoryOwnerResponse.data.repositoryOwner);
 
     // return this.apollo
     //   .watchQuery<RepositoriesResponse>({
-    //     query: RepositoresQuery
+    //     query: baseQuery
     //   })
     //   .map(response => response.data.repositoryOwner);
   }
 }
 
-function fakeResponse() {
-  return {
-    repositories: {
-      nodes: [
-        {
-          id: '1234',
-          name: 'Test Repo 1',
-          description: 'DESCRIPTION 1',
-          homepageUrl: 'www.test.com',
-          url: 'www.url.com',
-          primaryLanguage: {
-            name: 'Javascript',
-            color: '#ccc'
-          }
-        },
-        {
-          id: '45678',
-          name: 'Test Repo 2',
-          description: 'DESCRIPTION 2',
-          homepageUrl: 'www.test.com',
-          url: 'www.url.com',
-          primaryLanguage: {
-            name: 'Javascript',
-            color: '#ccc'
-          }
-        }
-    ]
-    }
-  };
-}

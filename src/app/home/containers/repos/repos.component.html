@@ -7,20 +7,15 @@
     <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
     </app-error>
 
-    <div class="col-xs-3"> <!-- required for floating -->
-      <!-- Nav tabs -->
-      <nav class="nav flex-column" *ngFor="let repo of repos$ | async">
-        <a class="nav-link active" href="#" (click)="selectRepo(repo.id)">{{repo.name}}</a>
-      </nav>
+    <!-- Nav tabs -->
+    <div class="col-xs-auto">
+      <div class="nav flex-column nav-pills" id="repo-list" role="tablist" aria-orientation="vertical">
+          <app-repo-list [repos]="repos$ | async" [selected]="selectedRepo$ | async" (selectRepo)="selectRepo($event)"></app-repo-list>
+      </div>
     </div>
+    <!-- Tab panes -->
     <div class="col">
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div *ngIf="_selected" class="tab-pane active" id="home">
-            {{_selected.name}}
-            <p><strong>TODO:</strong> Replace me with a component</p>
-          </div>
-        </div>
+      <app-repo-details *ngIf="_selected" [repo]="_selected"></app-repo-details>
     </div>
   </div>
 </div>

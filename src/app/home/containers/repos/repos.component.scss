@@ -2,6 +2,14 @@
 @import '~@wilsongp/common.assets/scss/tabs';
 $min-repo-height: 10rem;
 
+@function dynamic-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+
 ngb-tabset {
   min-height: $min-repo-height;
 }

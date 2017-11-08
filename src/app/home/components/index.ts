@@ -5,10 +5,16 @@ import { RouterModule } from '@angular/router';
 import { ErrorComponent } from './error';
 import { LoadingComponent } from './loading';
 import { BootstrapModule } from '../../shared/boostrap.module';
+import { RepoListComponent } from './repo-list';
+import { RepoDetailsComponent } from './repo-details';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 export const COMPONENTS = [
   ErrorComponent,
-  LoadingComponent
+  LoadingComponent,
+  RepoListComponent,
+  RepoDetailsComponent
 ];
 
 @NgModule({
@@ -16,7 +22,8 @@ export const COMPONENTS = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    BootstrapModule
+    BootstrapModule,
+    FlexLayoutModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

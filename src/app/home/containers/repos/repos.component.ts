@@ -28,7 +28,6 @@ export class ReposComponent implements OnInit {
 
   ngOnInit() {
     this.selectedRepo$.subscribe(repo => {
-      console.log(repo)
       this._selected = repo;
     });
     this.repos$.subscribe(data => {
