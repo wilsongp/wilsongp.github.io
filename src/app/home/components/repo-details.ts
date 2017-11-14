@@ -10,14 +10,26 @@ import { Repo } from '../models/repo';
   template: `
     <section fxLayout="column" fxLayoutAlign="center stretch">
       <div class="card" >
-        <div class="card-body">
-          <h4 class="card-title">{{repo.name}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">{{repo.description}}</h6>
-          <p class="card-text">
-            Stats about the repo
-          </p>
-          <a [href]="repo.url" target="_blank" class="card-link">Github</a>
-          <a *ngIf="repo.homepageUrl" [href]="repo.homepageUrl" target="_blank" class="card-link">Demo</a>
+        <div class="card-body" fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row">
+            <div class="repo-details">
+              <h4 class="card-title">{{repo.name}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{repo.description}}</h6>
+              <p class="card-text">
+                Stats about the repo
+              </p>
+              <a [href]="repo.url" target="_blank" class="card-link">Github</a>
+              <a *ngIf="repo.homepageUrl" [href]="repo.homepageUrl" target="_blank" class="card-link">Demo</a>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <ngb-carousel>
+              <ng-template ngbSlide *ngFor="let pr of repo.pullRequests.nodes">
+                  <h3>{{pr.title}}</h3>
+                  <p>{{pr.url}}</p>
+              </ng-template>
+            </ngb-carousel>
+          </div>
         </div>
       </div>
     </section>
