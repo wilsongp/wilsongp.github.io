@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-layout',
   template: `
-    <div class="container-fluid layout">
+    <div class="container-fluid layout" fxFill>
       <ng-content></ng-content>
     </div>
   `,
@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
     `
     .layout {
       padding: 0;
-      background: rgba(0, 0, 0, 0.03);
     }
     *, /deep/ * {
       -webkit-font-smoothing: antialiased;
