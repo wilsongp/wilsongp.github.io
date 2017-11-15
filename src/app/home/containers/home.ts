@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
   template: `
     <app-repos></app-repos>
   `,
-  styles: []
+  styleUrls: ['./home.styles.scss']
 })
 export class HomeComponent implements OnInit {
 

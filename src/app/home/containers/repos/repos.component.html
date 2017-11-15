@@ -1,23 +1,24 @@
-<div class="repository-container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1rem">
-  <h2>Projects</h2>
-  <div class="row" fxFill>
+<section>
+  <div class="repository-container" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="1rem">
+    <div class="row" fxFill>
 
-    <app-loading *ngIf="loading$ | async" message="Loading ..." fxLayout="row wrap" fxLayoutAlign="space-around center">
-    </app-loading>
-    <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    </app-error>
+      <app-loading *ngIf="loading$ | async" message="Loading ..." fxLayout="row wrap" fxLayoutAlign="space-around center">
+      </app-loading>
+      <app-error *ngIf="error$ | async" [error]="error$ | async" fxLayout="row wrap" fxLayoutAlign="space-around center">
+      </app-error>
 
-    <!-- Nav tabs -->
-    <div class="col-xs-auto">
-      <div class="nav flex-column nav-pills" id="repo-list" role="tablist" aria-orientation="vertical">
-          <app-repo-list [repos]="repos$ | async" [selected]="selectedRepo$ | async" (selectRepo)="selectRepo($event)"></app-repo-list>
+      <!-- Nav tabs -->
+      <div class="col-xs-auto">
+        <div class="nav flex-column nav-pills" id="repo-list" role="tablist" aria-orientation="vertical">
+            <app-repo-list [repos]="repos$ | async" [selected]="selectedRepo$ | async" (selectRepo)="selectRepo($event)"></app-repo-list>
+        </div>
+      </div>
+      <!-- Tab panes -->
+      <div class="col">
+        <app-repo-details *ngIf="_selected" [repo]="_selected"></app-repo-details>
       </div>
     </div>
-    <!-- Tab panes -->
-    <div class="col">
-      <app-repo-details *ngIf="_selected" [repo]="_selected"></app-repo-details>
-    </div>
   </div>
-</div>
+</section>
 
 

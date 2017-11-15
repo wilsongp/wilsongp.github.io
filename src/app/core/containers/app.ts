@@ -10,7 +10,7 @@ import * as toolbar from '../actions/toolbar';
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-layout fxLayout="column">
+    <app-layout fxLayout="column" fxFill>
       <app-toolbar (toggleMenu)="toggleNav()" [isCollapsed]="showNav$ | async" >
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">

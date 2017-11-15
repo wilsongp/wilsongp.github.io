@@ -24,6 +24,7 @@ export const repositoryOwnerResponse = {
                           message: 'Added footer and reworked sidebar dom',
                           commitUrl:
                             'https://github.com/wilsongp/wilsongp.github.io/commit/3a13fe44bd9c1b3a637e64b359f85fc53d69a666',
+                          committedDate: '2017-01-08T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -83,6 +84,7 @@ export const repositoryOwnerResponse = {
                           message: 'Disabled input if invalid',
                           commitUrl:
                             'https://github.com/wilsongp/templates.angular-ngrx/commit/9c78cf1182ef307f9d613c546e88ef41770d1c6b',
+                            committedDate: '2017-01-08T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -124,6 +126,7 @@ export const repositoryOwnerResponse = {
                           message: 'Updated npm registry',
                           commitUrl:
                             'https://github.com/wilsongp/sandbox.angular/commit/58f994d8d2b34121605a6d50ba57a5d463cb0380',
+                            committedDate: '2017-01-08T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -133,6 +136,7 @@ export const repositoryOwnerResponse = {
                           message: 'Moved common styles to npm package',
                           commitUrl:
                             'https://github.com/wilsongp/sandbox.angular/commit/56ca54234b0d041322742973e1e38c68be488b4f',
+                            committedDate: '2017-01-09T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -142,6 +146,7 @@ export const repositoryOwnerResponse = {
                           message: 'Merge branch \'master\' into development',
                           commitUrl:
                             'https://github.com/wilsongp/sandbox.angular/commit/e3f097e2ac119e45c9a9034d07edeabd58181ab0',
+                            committedDate: '2017-01-05T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -151,6 +156,7 @@ export const repositoryOwnerResponse = {
                           message: 'Updated registry in travis',
                           commitUrl:
                             'https://github.com/wilsongp/sandbox.angular/commit/00fd530767849e751de53647e594527c0d7af0fc',
+                            committedDate: '2017-01-08T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'
@@ -160,33 +166,7 @@ export const repositoryOwnerResponse = {
                           message: 'testing registry',
                           commitUrl:
                             'https://github.com/wilsongp/sandbox.angular/commit/a5f6686a4665cb6c214a8fc058dff784a38414a7',
-                          __typename: 'Commit'
-                        },
-                        __typename: 'PullRequestCommit'
-                      },
-                      {
-                        commit: {
-                          message: 'scope problems',
-                          commitUrl:
-                            'https://github.com/wilsongp/sandbox.angular/commit/790a5fb4f6d83ae50016242415ceb00277a0ad13',
-                          __typename: 'Commit'
-                        },
-                        __typename: 'PullRequestCommit'
-                      },
-                      {
-                        commit: {
-                          message: 'Updated assets repo',
-                          commitUrl:
-                            'https://github.com/wilsongp/sandbox.angular/commit/711ccb7770e218173d6a14f3118d957f8626d6e6',
-                          __typename: 'Commit'
-                        },
-                        __typename: 'PullRequestCommit'
-                      },
-                      {
-                        commit: {
-                          message: 'Merge branch \'master\' into development',
-                          commitUrl:
-                            'https://github.com/wilsongp/sandbox.angular/commit/10050c3e975bca468a146c75ceec2dc566c1b5ed',
+                            committedDate: '2017-01-08T20:29:21Z',
                           __typename: 'Commit'
                         },
                         __typename: 'PullRequestCommit'

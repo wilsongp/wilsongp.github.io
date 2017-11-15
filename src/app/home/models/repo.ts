@@ -39,4 +39,5 @@ export interface CommitNode {
 export interface Commit {
   message: string;
   commitUrl: string;
+  committedDate: any;
 }

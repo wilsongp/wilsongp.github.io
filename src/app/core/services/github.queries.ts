@@ -31,7 +31,7 @@ const repositoryOwnerQuery = (login: string) => {
                 title,
                 number,
                 url,
-                ${commitQuery({first: 100})}
+                ${commitQuery({first: 5})}
               }
             }
             primaryLanguage {
