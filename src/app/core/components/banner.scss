@@ -11,7 +11,7 @@ $bg-size: cover;
 $bg-size-md: contain;
 $bg-size-lg: contain;
 
-$bg-mobile: 'assets/images/header_lg.jpg';
+$bg-mobile: url(/assets/images/header_lg.jpg);
 
 .banner {
   height: $banner-height;
