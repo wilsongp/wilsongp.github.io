@@ -7,7 +7,8 @@ const commitQuery = ({first}) => `
     nodes {
       commit {
         message,
-        commitUrl
+        commitUrl,
+        committedDate
       }
     }
 }

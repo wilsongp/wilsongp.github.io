@@ -14,7 +14,7 @@ import { Repo } from '../models/repo';
             <h4 class="card-title">{{repo.name}}</h4>
             <h6 class="card-subtitle mb-2 text-muted">{{repo.description}}</h6>
             <p class="card-text">
-              Stats about the repo
+              {{repo.pullRequests.totalCount}} Pull Requests
             </p>
             <a [href]="repo.url" target="_blank" class="card-link">Github</a>
             <a *ngIf="repo.homepageUrl" [href]="repo.homepageUrl" target="_blank" class="card-link">Demo</a>
