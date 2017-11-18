@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { ChartModule } from 'angular-highcharts';
+
 import { ErrorComponent } from './error';
 import { LoadingComponent } from './loading';
 import { BootstrapModule } from '../../shared/boostrap.module';
@@ -25,7 +27,8 @@ export const COMPONENTS = [
     ReactiveFormsModule,
     RouterModule,
     BootstrapModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

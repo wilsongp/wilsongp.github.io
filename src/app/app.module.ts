@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,7 +14,7 @@ import {
 
 import { CoreModule } from './core/core.module';
 import { BootstrapModule } from './shared/boostrap.module';
-import { ApolloClientModule } from './shared/apollo.module';
+import { GraphQlClientModule } from './shared/graphql.module';
 
 import { routes } from './routes';
 import { reducers, metaReducers } from './reducers';
@@ -28,9 +28,9 @@ import { environment } from '../environments/environment';
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     BootstrapModule,
-    ApolloClientModule,
+    GraphQlClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,
