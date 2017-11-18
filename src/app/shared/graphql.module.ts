@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 
 import { environment } from './../../environments/environment';
 
-const uri = environment.gatewayApiUrl + 'github';
-
-
+/**
+ * Docs @ https://www.apollographql.com/docs/angular/basics/queries.html#queryref
+ */
 @NgModule({
   imports: [
     CommonModule,
@@ -24,14 +24,13 @@ const uri = environment.gatewayApiUrl + 'github';
   ]
 })
 export class GraphQlClientModule {
-  onstructor(
+  constructor(
     apollo: Apollo,
     httpLink: HttpLink
   ) {
-    // create Apollo
-    apollo.create({
-      link: httpLink.create({ uri }),
-      cache: new InMemoryCache()
-    });
+    apollo.create(
+      { link: httpLink.create({ uri: environment.gatewayApiUrl + 'github' }), cache: new InMemoryCache() },
+      'github'
+    );
   }
 }

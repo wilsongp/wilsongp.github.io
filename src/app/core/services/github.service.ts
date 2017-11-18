@@ -39,15 +39,13 @@ export class GithubService {
   constructor(private apollo: Apollo) {}
 
   searchRepos(search: RepositorySearchFields): Observable<RepositorySearchResponse> {
-    const baseQuery = queries.repositoryOwnerQuery('wilsongp');
+    const query = queries.repositoryOwnerQuery('wilsongp');
 
-    return Observable.of(MockData.repositoryOwnerResponse.data.repositoryOwner);
+    //return Observable.of(MockData.repositoryOwnerResponse.data.repositoryOwner);
 
-    // return this.apollo
-    //   .watchQuery<RepositoriesResponse>({
-    //     query: baseQuery
-    //   })
-    //   .map(response => response.data.repositoryOwner);
+    return this.apollo.use('github')
+      .query<RepositoriesResponse>({ query })
+      .map(response => response.data.repositoryOwner);
   }
 }
 

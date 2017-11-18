@@ -6,14 +6,34 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-loading',
   template: `
-  <div class="app-loading" fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <ngb-progressbar value="100" type="info" striped="true" animated="true">{{message}}</ngb-progressbar>
+  <div class="loading-container" fxLayout="column" fxLayoutAlign="space-around center">
+    <div class="app-loading" >
+    </div>
+    {{message}}
   </div>
   `,
   styles: [`
-    .app-loading{
-      width: 100%;
-      padding: 1rem;
+    .loading-container {
+
+    }
+    .app-loading {
+      border: .5rem solid #d7dfed;
+      border-radius: 50%;
+      border-top: .5rem solid #3498db;
+      width: 3rem;
+      height: 3rem;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   `]
 })
