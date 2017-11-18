@@ -5,7 +5,7 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 
-import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { ApolloQueryResult } from 'apollo-client';
 
 import * as queries from './github.queries';

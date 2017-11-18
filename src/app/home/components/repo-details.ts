@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-
+import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
+import { Chart } from 'angular-highcharts';
 
 import { Repo } from '../models/repo';
 
@@ -13,9 +14,7 @@ import { Repo } from '../models/repo';
         <div>
             <h4 class="card-title">{{repo.name}}</h4>
             <h6 class="card-subtitle mb-2 text-muted">{{repo.description}}</h6>
-            <p class="card-text">
-              {{repo.pullRequests.totalCount}} Pull Requests
-            </p>
+            <div [chart]="chart"></div>
             <a [href]="repo.url" target="_blank" class="card-link">Github</a>
             <a *ngIf="repo.homepageUrl" [href]="repo.homepageUrl" target="_blank" class="card-link">Demo</a>
         </div>
@@ -30,7 +29,33 @@ import { Repo } from '../models/repo';
     }
   `]
 })
-export class RepoDetailsComponent {
+export class RepoDetailsComponent implements OnInit {
   @Input() repo: Repo;
+
+  chart: Chart;
+
+  ngOnInit(): void {
+    const chart = new Chart({
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Linechart'
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        name: 'Line 1',
+        data: [1, 2, 3]
+      }]
+    });
+    chart.addPoint(4);
+    this.chart = chart;
+    chart.addPoint(5);
+    setTimeout(() => {
+      chart.addPoint(6);
+    }, 2000);
+  }
 
 }
