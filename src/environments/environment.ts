@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  gatewayApiUrl: 'https://gateway-proxy-api.herokuapp.com/v1/'
+  gatewayApiUrl: 'http://localhost:5000/v1/'
 };
