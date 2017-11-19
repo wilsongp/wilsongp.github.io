@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable, } from 'rxjs/Observable';
+import 'rxjs/add/operator/timeout';
 
 import * as fromHome from '../../reducers';
 import * as repos from '../../actions/repo';
-import { Observable } from 'rxjs/Observable';
 import { Repo } from '../../models/repo';
 
 @Component({
@@ -27,14 +28,18 @@ export class ReposComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedRepo$.subscribe(repo => {
-      this._selected = repo;
-    });
-    this.repos$.subscribe(data => {
-      if (data.length > 0) {
-        this.store.dispatch(new repos.SelectRepo(data[0].id));
+    this.selectedRepo$
+    .subscribe(
+      repo => this._selected = repo
+    );
+    this.repos$
+    .subscribe(
+      data => {
+        if (data.length > 0) {
+          this.store.dispatch(new repos.SelectRepo(data[0].id));
+        }
       }
-    });
+    );
   }
 
   selectRepo(id: string) {

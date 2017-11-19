@@ -14,6 +14,7 @@ import { reducers } from './reducers';
 
 import { ReposComponent } from './containers/repos/repos.component';
 import { HomeComponent } from './containers/home';
+import { HobbiesComponent } from './containers/hobbies/hobbies.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { HomeComponent } from './containers/home';
   ],
   declarations: [
     HomeComponent,
-    ReposComponent
+    ReposComponent,
+    HobbiesComponent
   ],
   providers: [],
 })

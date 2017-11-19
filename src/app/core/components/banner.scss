@@ -1,9 +1,10 @@
 
 @import '~@wilsongp/common.assets/scss/mixins';
 @import '~@wilsongp/common.assets/scss/variables';
+@import '../../../assets/style/vars';
 
 // 56px is height of toolbar
-$banner-height: calc(100vh - 56px);
+$banner-height: $section-height;
 $banner-height-md: 40vh;
 $banner-height-lg: 50vh;
 
@@ -11,15 +12,15 @@ $bg-size: cover;
 $bg-size-md: contain;
 $bg-size-lg: contain;
 
-$bg-mobile: url(/assets/images/header_lg.jpg);
+$bg-image: url(/assets/images/header_lg.jpg);
 
 .banner {
   height: $banner-height;
-  background-image: $bg-mobile;
+  background-image: $bg-image;
   background-size: $bg-size;
   background-position: center;
   background-repeat: no-repeat;
-
+  box-shadow: 0px 5px 4px grey;
   font-size: 2rem;
 
   img {
@@ -41,16 +42,7 @@ $bg-mobile: url(/assets/images/header_lg.jpg);
 
 @include md {
   .banner {
-    height: auto; /* the image height determines the height */
     font-size: 2rem;
-    img{
-      position: relative; /*Undoing the hack basically*/
-      right: auto;
-      top: auto;
-      left: auto;
-      bottom: auto;
-      width: 100%; /*rather than the width get cropped, it's full. height is auto*/
-    }
   }
   .banner-content {
     h1 {

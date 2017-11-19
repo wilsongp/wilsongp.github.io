@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-home',
   template: `
     <app-repos></app-repos>
+    <app-hobbies></app-hobbies>
   `,
   styleUrls: ['./home.styles.scss']
 })

@@ -1,0 +1,7 @@
+@import '~@wilsongp/common.assets/scss/mixins';
+@import '../../../../assets/style/vars';
+
+p {
+  height: $section-height;
+  background: blue;
+}
