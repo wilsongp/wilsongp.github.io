@@ -1,7 +1,14 @@
 @import '~@wilsongp/common.assets/scss/mixins';
+@import '../../../assets/style/vars';
 
-app-repos {
-  height: 15rem;
+section {
+  &.fixed-height {
+    height: $section-height;
+  }
+
+  &:nth-child(even) {
+    box-shadow: 0 0 1rem grey
+  }
 }
 
 @include md {

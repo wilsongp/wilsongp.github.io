@@ -26,7 +26,8 @@ import { HobbiesComponent } from './containers/hobbies/hobbies.component';
     RouterModule.forChild([
       { path: '', component: HomeComponent },
     ]),
-    StoreModule.forFeature('repos', reducers),
+    StoreModule.forFeature('repos', reducers.repos),
+    StoreModule.forFeature('hobbies', reducers.hobbies),
     EffectsModule.forFeature([
       RepoEffects
     ]),

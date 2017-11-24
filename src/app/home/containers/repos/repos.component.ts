@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, } from 'rxjs/Observable';
-import 'rxjs/add/operator/timeout';
 
 import * as fromHome from '../../reducers';
 import * as repos from '../../actions/repo';

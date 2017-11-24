@@ -8,8 +8,12 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-home',
   template: `
+  <section class="fixed-height">
     <app-repos></app-repos>
+  </section>
+  <section>
     <app-hobbies></app-hobbies>
+  </section>
   `,
   styleUrls: ['./home.styles.scss']
 })

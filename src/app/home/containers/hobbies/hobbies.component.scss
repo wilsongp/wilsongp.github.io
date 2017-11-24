@@ -1,7 +1,45 @@
 @import '~@wilsongp/common.assets/scss/mixins';
 @import '../../../../assets/style/vars';
 
-p {
-  height: $section-height;
-  background: blue;
+$odd-color: rgb(146, 182, 239);
+$even-color: rgb(206, 215, 229);
+$hover-opacity: .3;
+
+img {
+  max-height: $section-height;
+  max-width: 50%;
+}
+
+.mobile {
+  display: none;
+}
+
+.hobby-wrapper {
+  background-color: $odd-color;
+
+  &:hover {
+    filter: brightness($hover-opacity);
+    .mobile {
+      display: block;
+      color: #ffffff;
+      position: absolute;
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: $even-color;
+
+    img {
+      order: 2;
+    }
+  }
+}
+
+@include md {
+
+ .hobby-wrapper {
+    &:hover {
+      filter: brightness(1);
+    }
+ }
 }
