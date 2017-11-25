@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <img [src]="hobby.imageUrl" alt="Hobby image">
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex>
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex fxHide.lt-md="true">
         <div>
           <h3>{{hobby.title}}</h3>
           <p fxHide.lt-md="true">{{hobby.description}}</p>
