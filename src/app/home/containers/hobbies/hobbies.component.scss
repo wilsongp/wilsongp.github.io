@@ -10,15 +10,17 @@ img {
   max-width: 50%;
 }
 
-.hobbies {
-  app-hobby:nth-child(even) {
-    filter: brightness(.5);
-    .hobby-wrapper {
-      background-color: $even-color;
 
-      img {
-        order: 2;
-      }
+.hobby-wrapper > div {
+  &:nth-of-type(odd) {
+    background-color: $odd-color;
+  }
+
+  &:nth-of-type(even) {
+    //filter: brightness(.5);
+    background-color: $even-color;
+    img {
+      filter: blur(50%)
     }
   }
 }
@@ -27,10 +29,6 @@ img {
   display: none;
   color: #ffffff;
   position: absolute;
-}
-
-.hobby-wrapper {
-  background-color: $odd-color;
 }
 
 .filterClass {

@@ -1,3 +1,8 @@
-<div fxLayout="column" class="hobbies">
-  <app-hobby [hobby]="hobby" fxFill *ngFor="let hobby of hobbies$ | async; let i = index"></app-hobby>
+<div class="hobby-wrapper" fxLayout="column">
+  <div *ngFor="let hobby of hobbies$ | async; let i = index">
+      <app-hobby [hobby]="hobby" ></app-hobby>
+      <span class="mobile" fxFlexAlign="center">
+        {{hobby.description}}
+      </span>
+  </div>
 </div>

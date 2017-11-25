@@ -8,16 +8,13 @@ import { DOCUMENT } from '@angular/platform-browser';
   selector: 'app-hobby',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="hobby-wrapper" fxLayout="row" fxFill [class.filterClass]="filterClass">
-      <img [src]="hobby.imageUrl" alt="Hobby image">
-      <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex>
-          <div>
-            <h3>{{hobby.title}}</h3>
-            <p fxHide.lt-md="true">{{hobby.description}}</p>
-          </div>
-      </div>
+    <img [src]="hobby.imageUrl" alt="Hobby image">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex>
+        <div>
+          <h3>{{hobby.title}}</h3>
+          <p fxHide.lt-md="true">{{hobby.description}}</p>
+        </div>
     </div>
-    <span class="mobile" fxFlexAlign="center">{{hobby.description}}</span>
   `,
   styleUrls: ['../containers/hobbies/hobbies.component.scss']
 })
