@@ -10,36 +10,38 @@ img {
   max-width: 50%;
 }
 
+.hobbies {
+  app-hobby:nth-child(even) {
+    filter: brightness(.5);
+    .hobby-wrapper {
+      background-color: $even-color;
+
+      img {
+        order: 2;
+      }
+    }
+  }
+}
+
 .mobile {
   display: none;
+  color: #ffffff;
+  position: absolute;
 }
 
 .hobby-wrapper {
   background-color: $odd-color;
+}
 
-  &:hover {
-    filter: brightness($hover-opacity);
-    .mobile {
-      display: block;
-      color: #ffffff;
-      position: absolute;
-    }
-  }
-
-  &:nth-child(even) {
-    background-color: $even-color;
-
-    img {
-      order: 2;
-    }
+.filterClass {
+  filter: brightness($hover-opacity);
+  + .mobile {
+    display: block;
   }
 }
 
 @include md {
-
- .hobby-wrapper {
-    &:hover {
-      filter: brightness(1);
-    }
+ .filterClass {
+   filter: brightness(1);
  }
 }

@@ -1,12 +1,3 @@
-<div fxLayout="column">
-  <div *ngFor="let hobby of hobbies$ | async; let i = index" class="hobby-wrapper" fxLayout="row">
-      <img [src]="hobby.imageUrl" alt="Hobby image">
-      <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex>
-          <div>
-            <h3>{{hobby.title}}</h3>
-            <p fxHide.lt-md="true">{{hobby.description}}</p>
-          </div>
-      </div>
-      <!-- <span class="mobile" fxFlexAlign="center">{{hobby.description}}</span> -->
-  </div>
+<div fxLayout="column" class="hobbies">
+  <app-hobby [hobby]="hobby" fxFill *ngFor="let hobby of hobbies$ | async; let i = index"></app-hobby>
 </div>
