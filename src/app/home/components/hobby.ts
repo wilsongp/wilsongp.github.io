@@ -1,41 +1,67 @@
-import { Component, ChangeDetectionStrategy, Input, OnInit, HostListener, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnInit, HostListener, Inject, ElementRef } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 import { Observable } from 'rxjs/Observable';
 
 import { Hobby } from '../models/hobby';
-import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hobby',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <img [src]="hobby.imageUrl" alt="Hobby image">
-    <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex fxHide.lt-md="true">
-        <div>
-          <h3>{{hobby.title}}</h3>
-          <p fxHide.lt-md="true">{{hobby.description}}</p>
-        </div>
+    <div [@scrollAnimation]="state">
+      <img [src]="hobby.imageUrl" alt="Hobby image">
+      <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex fxHide.lt-md="true">
+          <div>
+            <h3>{{hobby.title}}</h3>
+            <p fxHide.lt-md="true">{{hobby.description}}</p>
+          </div>
+      </div>
     </div>
   `,
-  styleUrls: ['../containers/hobbies/hobbies.component.scss']
+  styleUrls: ['../containers/hobbies/hobbies.component.scss'],
+  animations: [
+      trigger('scrollAnimation', [
+        state('dim', style({
+          filter: "brightness(.5)"
+        })),
+        state('brighten',   style({
+          filter: "brightness(1)"
+        })),
+        transition('dim => brighten', animate('700ms ease-out')),
+        transition('brighten => dim', animate('700ms ease-in'))
+      ])
+  ]
 })
-export class HobbyComponent implements OnInit {
+export class HobbyComponent {
   @Input() hobby: Hobby;
-  @Input()
 
+  state = 'brighten';
   filterClass = false;
 
-  constructor(@Inject(DOCUMENT) private doc: Document){}
+  constructor(public el: ElementRef) { }
 
-  ngOnInit() {}
+    @HostListener('window:scroll', ['$event'])
+      checkScroll() {
+        const thisHeight = this.el.nativeElement.offsetHeight;
+        const componentPosition = this.el.nativeElement.offsetTop;
+        const scrollPosition = window.pageYOffset;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-     const num = this.doc.body.scrollTop;
-     if ( num > 50 ) {
-     this.filterClass = true;
-     } else if (this.filterClass && num < 5) {
-     this.filterClass = false;
-     }
+        console.log(thisHeight, componentPosition, scrollPosition);
+
+        if (scrollPosition + thisHeight >= componentPosition) {
+          this.state = 'dim';
+        } else {
+          this.state = 'brighten';
+        }
+
   }
 
 }
