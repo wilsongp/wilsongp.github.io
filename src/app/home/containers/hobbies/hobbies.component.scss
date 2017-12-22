@@ -29,9 +29,9 @@ img {
 }
 
 .mobile {
-  display: none;
   color: #ffffff;
   position: absolute;
+  z-index: 2;
 }
 
 .filterClass {
@@ -47,7 +47,7 @@ img {
  }
 
  img {
-  max-height: 1vh;//$section-height;
+  max-height: $section-height;
   max-width: 50%;
 
   height: auto;

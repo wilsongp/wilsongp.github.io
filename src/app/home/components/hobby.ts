@@ -16,7 +16,7 @@ import { Hobby } from '../models/hobby';
   selector: 'app-hobby',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div [@scrollAnimation]="state">
+    <div [@scrollAnimation]="state" fxLayoutAlign="space-between center">
       <img [src]="hobby.imageUrl" alt="Hobby image">
       <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex fxHide.lt-md="true">
           <div>
@@ -24,16 +24,19 @@ import { Hobby } from '../models/hobby';
             <p fxHide.lt-md="true">{{hobby.description}}</p>
           </div>
       </div>
+      <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['../containers/hobbies/hobbies.component.scss'],
   animations: [
       trigger('scrollAnimation', [
         state('dim', style({
-          filter: "brightness(.5)"
+          filter: "brightness(.5)",
+          "z-index": 3
         })),
         state('brighten',   style({
-          filter: "brightness(1)"
+          filter: "brightness(1)",
+          "z-index": 1
         })),
         transition('dim => brighten', animate('700ms ease-out')),
         transition('brighten => dim', animate('700ms ease-in'))
