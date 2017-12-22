@@ -1,6 +1,5 @@
 @import '~@wilsongp/common.assets/scss/mixins';
-@import '~@wilsongp/common.assets/scss/tabs';
-$min-repo-height: 10rem;
+@import '../../../../assets/style/vars';
 
 @function dynamic-text-color($color) {
   @if (lightness($color) > 50) {
@@ -15,7 +14,7 @@ section {
 }
 
 ngb-tabset {
-  min-height: $min-repo-height;
+  min-height: $section-height;
 }
 
 app-loading,
