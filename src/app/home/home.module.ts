@@ -14,6 +14,8 @@ import { reducers } from './reducers';
 
 import { ReposComponent } from './containers/repos/repos.component';
 import { HomeComponent } from './containers/home';
+import { HobbiesComponent } from './containers/hobbies/hobbies.component';
+import { HobbyComponent } from './components/hobby';
 
 @NgModule({
   imports: [
@@ -25,14 +27,17 @@ import { HomeComponent } from './containers/home';
     RouterModule.forChild([
       { path: '', component: HomeComponent },
     ]),
-    StoreModule.forFeature('repos', reducers),
+    StoreModule.forFeature('repos', reducers.repos),
+    StoreModule.forFeature('hobbies', reducers.hobbies),
     EffectsModule.forFeature([
       RepoEffects
     ]),
   ],
   declarations: [
     HomeComponent,
-    ReposComponent
+    ReposComponent,
+    HobbiesComponent,
+    HobbyComponent
   ],
   providers: [],
 })

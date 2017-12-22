@@ -10,8 +10,8 @@ import { Repo } from '../models/repo';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section fxLayout="column" fxLayoutAlign="center stretch" fxFill>
-      <div fxLayout="row" fxLayoutAlign="center center"  fxLayoutAlign.gt-sm="space-around center">
-        <div fxLayout="column" fxLauyoutAlign="center center" fxFlexAlign="start">
+      <div fxLayout="row" fxLayoutAlign="center center"  fxLayoutAlign.gt-sm="space-around center" fxFill>
+        <div class="detail-pane" fxLayout="column" fxLauyoutAlign="center center">
             <h4 class="card-title">{{repo.name}}</h4>
             <h6 class="card-subtitle mb-2 text-muted">{{repo.description}}</h6>
             <nav class="nav">
@@ -19,7 +19,7 @@ import { Repo } from '../models/repo';
               <a [href]="repo.homepageUrl" *ngIf="repo.homepageUrl" class="nav-link active" target="_blank" >Demo</a>
             </nav>
         </div>
-        <app-pr-details fxHide.sm fxHide.lt-sm *ngIf="repo.pullRequests.nodes.length > 0" [pullRequest]="repo.pullRequests.nodes[0]">
+        <app-pr-details fxHide.sm fxHide.lt-sm *ngIf="repo.pullRequests.nodes.length > 0" [pullRequest]="repo.pullRequests.nodes[0]" >
         </app-pr-details>
       </div>
     </section>
@@ -27,6 +27,9 @@ import { Repo } from '../models/repo';
   styles: [`
     section {
       margin: 0 0 0 0;
+    }
+    .detail-pane {
+      max-width: 40%;
     }
   `]
 })
