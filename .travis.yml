@@ -13,11 +13,8 @@ cache:
 before_install:
  - printf "@wilsongp:registry=https://registry.npmjs.org/" >> ~/.npmrc
 
-before_script:
-  - npm install -g --silent @angular/cli
-
-script: # the build step
-   - npm run deploy
+script:
+   - npm run build
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!)
