@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import ReactGA from 'react-ga';
 
@@ -33,23 +34,27 @@ export class App extends React.Component {
 
   componentWillMount() {
     if (!this.state.initialized) {
-      ReactGA.initialize('UA-121572014-1');
+      ReactGA.initialize('UA-121572014-1', {
+        debug: process.env.NODE_ENV === 'development'
+      });
       this.setState({ initialized: true });
     }
   }
 
   render() {
     return (
-      <Analytics>
-        <ThemeProvider theme={this.state.theme}>
-          <StyledApp>
-            <Header />
-            <Bio />
-            <Projects />
-            <Contact />
-          </StyledApp>
-        </ThemeProvider>
-      </Analytics>
+      <BrowserRouter>
+        <Analytics>
+          <ThemeProvider theme={this.state.theme}>
+            <StyledApp>
+              <Header />
+              <Bio />
+              <Projects />
+              <Contact />
+            </StyledApp>
+          </ThemeProvider>
+        </Analytics>
+      </BrowserRouter>
     );
   }
 }
