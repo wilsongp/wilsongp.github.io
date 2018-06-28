@@ -11,8 +11,23 @@ export class AnalyticsWithoutRouter extends React.Component {
     };
   }
 
-  render() {
+  static getDerivedStateFromProps(props, state) {
+    return state.prevLocation != props.location.pathname ?
+      { ...state, prevLocation: props.location.pathname } :
+      null;
+  }
 
+  componentDidMount() {
+    const nextPage = this.props.location.pathname;
+
+    ReactGA.set({ nextPage });
+
+    if (this.props.logPageView) {
+      ReactGA.pageview(nextPage);
+    }
+  }
+
+  componentDidUpdate() {
     const currentPage = this.state.prevLocation;
     const nextPage = this.props.location.pathname;
     if (currentPage !== nextPage) {
@@ -22,6 +37,9 @@ export class AnalyticsWithoutRouter extends React.Component {
         ReactGA.pageview(nextPage);
       }
     }
+  }
+
+  render() {
 
     return <div>{this.props.children}</div>;
   }
