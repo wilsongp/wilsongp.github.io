@@ -7,7 +7,7 @@ const paths = require("./paths");
 module.exports = {
   mode: "development",
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".json"]
+    extensions: ["*", ".mjs", ".js", ".jsx", ".json"]
   },
   devtool: "source-map", // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: paths.entry, // Defining path seems necessary for this to work consistently on Windows machines.,
@@ -50,10 +50,10 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["babel-loader"] },
+      { test: /\.(jsx?|mjs)$/, exclude: /node_modules/, loaders: ["babel-loader"] },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: "file-loader" },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      { test: /\.(jpe?g|png|gif)$/i, loader: "file-loader?name=[name].[ext]" },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=[name].[ext]" },
       { test: /\.ico$/, loader: "file-loader?name=[name].[ext]" }
     ]
   }

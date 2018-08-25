@@ -1,36 +1,17 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-import { Header } from './Header';
-import { Bio } from './Bio';
-import { Projects } from './Projects';
-import { Contact } from './Contact';
 import { Analytics } from '../analytics/Analytics';
-
-export const StyledApp = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  header {
-    box-shadow: 0 0.5rem 2rem #2b2b2b;
-  }
-`;
+import { HomePage } from './HomePage';
+import { PlaygroundPage } from './Playground';
 
 export class App extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      initialized: false,
-      theme: {
-        mediaBreak: {
-          sm: '768px'
-        }
-      }
-    };
+    this.state = { initialized: false };
   }
+
 
   componentWillMount() {
     if (!this.state.initialized) {
@@ -45,14 +26,11 @@ export class App extends React.Component {
     return (
       <BrowserRouter>
         <Analytics>
-          <ThemeProvider theme={this.state.theme}>
-            <StyledApp>
-              <Header />
-              <Bio />
-              <Projects />
-              <Contact />
-            </StyledApp>
-          </ThemeProvider>
+          <Switch>
+            <Route exact path="/playground" component={PlaygroundPage} />
+            <Route component={HomePage} />
+          </Switch>
+          <HomePage />
         </Analytics>
       </BrowserRouter>
     );
