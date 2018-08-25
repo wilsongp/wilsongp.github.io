@@ -7,7 +7,7 @@ const paths = require("./paths");
 module.exports = {
   mode: "development",
   resolve: {
-    extensions: ["*", ".mjs", ".js", ".jsx", ".json"]
+    extensions: ["*", ".js", ".jsx", ".json"]
   },
   devtool: "source-map", // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: paths.entry, // Defining path seems necessary for this to work consistently on Windows machines.,
